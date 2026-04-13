@@ -10,7 +10,7 @@ app.secret_key = 'your_secret_key_here'   # Change this for production!
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'Dhiv@2007',
+    'password': '1234',
     'database': 'bloodbank_new'
 }
 
