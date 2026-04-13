@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Blood Units Inventory</h2>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Unit ID</th><th>Blood Group</th><th>Quantity (units)</th><th>Collection Date</th><th>Expiry Date</th><th>Donor</th></tr>
+    </thead>
+    <tbody>
+        {% for unit in units %}
+        <tr>
+            <td>{{ unit.blood_unit_id }}</td>
+            <td>{{ unit.blood_group }}</td>
+            <td>{{ unit.quantity }}</td>
+            <td>{{ unit.collection_date }}</td>
+            <td>{{ unit.expiry_date }}</td>
+            <td>{{ unit.donor_name if unit.donor_name else 'Unknown' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .sidebar { background: #f8f9fa; min-height: 100vh; }
+        .nav-link { color: #333; }
+        .nav-link.active { background: #c31432; color: white; border-radius: 0.5rem; }
+        .stat-card { border-radius: 1rem; transition: 0.2s; }
+        .stat-card:hover { transform: translateY(-5px); }
+        .navbar-blood { background: #c31432; }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar p-3">
+            <h5 class="text-danger"><i class="fas fa-tint"></i> Blood Bank</h5>
+            <hr>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="/dashboard" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="/donors" class="nav-link"><i class="fas fa-users"></i> Donors</a></li>
+                <li class="nav-item"><a href="/patients" class="nav-link"><i class="fas fa-procedures"></i> Patients</a></li>
+                <li class="nav-item"><a href="/requests" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Blood Requests</a></li>
+                <li class="nav-item"><a href="/blood_units" class="nav-link"><i class="fas fa-droplet"></i> Blood Units</a></li>
+                <li class="nav-item"><a href="/staff" class="nav-link"><i class="fas fa-user-md"></i> Staff</a></li>
+                <li class="nav-item"><a href="/logout" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main content -->
+        <div class="col-md-10 p-4">
+            <h2>Welcome, {{ session.name }} ({{ session.role }})</h2>
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <div class="card stat-card bg-primary text-white p-3">
+                        <h5>Total Donors</h5>
+                        <h2>{{ donors }}</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card bg-success text-white p-3">
+                        <h5>Total Patients</h5>
+                        <h2>{{ patients }}</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card bg-info text-white p-3">
+                        <h5>Total Requests</h5>
+                        <h2>{{ requests }}</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card bg-warning p-3">
+                        <h5>Pending</h5>
+                        <h2>{{ pending }}</h2>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="card stat-card bg-danger text-white p-3">
+                        <h5>Completed</h5>
+                        <h2>{{ completed }}</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <h4>Quick Actions</h4>
+                <div class="row">
+                    <div class="col-md-3"><a href="/add_donor" class="btn btn-outline-primary w-100">➕ Add Donor</a></div>
+                    <div class="col-md-3"><a href="/add_patient" class="btn btn-outline-success w-100">🏥 Add Patient</a></div>
+                    <div class="col-md-3"><a href="/add_request" class="btn btn-outline-warning w-100">📋 New Blood Request</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

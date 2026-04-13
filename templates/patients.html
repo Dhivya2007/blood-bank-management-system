@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Patients List</h2>
+<a href="/add_patient" class="btn btn-primary mb-3">+ Add New Patient</a>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Patient ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Blood Group</th><th>Hospital</th><th>Phone</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+        {% for p in patients %}
+        <tr>
+            <td>{{ p.patient_id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.age }}</td>
+            <td>{{ p.gender }}</td>
+            <td>{{ p.blood_group }}</td>
+            <td>{{ p.hospital_name }}</td>
+            <td>{{ p.phone }}</td>
+            <td>
+                <!-- You can add edit/delete later -->
+                <a href="#" class="btn btn-sm btn-outline-secondary disabled">View Requests</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

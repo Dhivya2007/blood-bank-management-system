@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Donors List</h2>
+<a href="/add_donor" class="btn btn-primary mb-3">+ Add Donor</a>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Blood Group</th><th>Phone</th><th>Address</th><th>Last Donation</th></tr>
+    </thead>
+    <tbody>
+        {% for d in donors %}
+        <tr>
+            <td>{{ d.donor_id }}</td>
+            <td>{{ d.name }}</td>
+            <td>{{ d.age }}</td>
+            <td>{{ d.gender }}</td>
+            <td>{{ d.blood_group }}</td>
+            <td>{{ d.phone }}</td>
+            <td>{{ d.address }}</td>
+            <td>{{ d.last_donation_date or 'Never' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

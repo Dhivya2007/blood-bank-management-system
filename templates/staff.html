@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Staff Members</h2>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Staff ID</th><th>Name</th><th>Role</th><th>Phone</th><th>Email</th></tr>
+    </thead>
+    <tbody>
+        {% for s in staff %}
+        <tr>
+            <td>{{ s.staff_id }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.role }}</td>
+            <td>{{ s.phone }}</td>
+            <td>{{ s.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

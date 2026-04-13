@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create Blood Request</h2>
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Request ID (unique number)</label>
+            <input type="number" name="request_id" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Patient</label>
+            <select name="patient_id" class="form-control" required>
+                <option value="">-- Select Patient --</option>
+                {% for p in patients %}
+                <option value="{{ p.patient_id }}">{{ p.name }} (ID: {{ p.patient_id }})</option>
+                {% endfor %}
+            </select>
+            <small class="text-muted">If patient not listed, <a href="/add_patient">add patient first</a>.</small>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Blood Group Required</label>
+            <input type="text" name="blood_group" placeholder="e.g., O+" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Quantity (units)</label>
+            <input type="number" name="quantity_required" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Request Date</label>
+            <input type="date" name="request_date" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Status</label>
+            <select name="status" class="form-control">
+                <option>Pending</option>
+                <option>Completed</option>
+                <option>Cancelled</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Request</button>
+</form>
+
+<script>
+    // Optional: Auto-populate blood group from selected patient? Could be added later.
+</script>
+{% endblock %}

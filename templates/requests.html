@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Blood Requests</h2>
+<a href="/add_request" class="btn btn-success mb-3">+ New Blood Request</a>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Request ID</th><th>Patient Name</th><th>Blood Group</th><th>Quantity</th><th>Request Date</th><th>Status</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        {% for req in requests %}
+        <tr>
+            <td>{{ req.request_id }}</td>
+            <td>{{ req.patient_name }}</td>
+            <td>{{ req.blood_group }}</td>
+            <td>{{ req.quantity_required }}</td>
+            <td>{{ req.request_date }}</td>
+            <td>
+                {% if req.status == 'Pending' %}
+                    <span class="badge bg-warning">Pending</span>
+                {% elif req.status == 'Completed' %}
+                    <span class="badge bg-success">Completed</span>
+                {% elif req.status == 'Cancelled' %}
+                    <span class="badge bg-danger">Cancelled</span>
+                {% else %}
+                    <span class="badge bg-secondary">{{ req.status }}</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if req.status == 'Pending' %}
+                <a href="/update_request_status/{{ req.request_id }}/Completed" class="btn btn-sm btn-success">Mark Completed</a>
+                <a href="/update_request_status/{{ req.request_id }}/Cancelled" class="btn btn-sm btn-danger">Cancel</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
